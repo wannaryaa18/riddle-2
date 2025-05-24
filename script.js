@@ -83,6 +83,26 @@
                     title: "Railway Bridge",
                     text: "Beneath this bridge,\na river runs through history.\nIts waters have seen colonial tales\nand witnessed time flow endlessly.\nThis river connects the city to its roots.\nName the river.\n(One word)",
                     answer: "ciliwung"
+                },
+                {
+                    title: "Kampung Susun Kunir",
+                    text: "Beneath the leaves and morning rain,\nwhere orange wood holds roots again.\nNot just a bench, not just a seat,\nbut stories carved where plant life meets.\nLetters curved in playful form,\nhidden in places quiet, warm.\nNot one place, but many as one\na name they share under the sun.\nLook close where the plants align,\nread what the wood leaves behind.\n(9 letters)",
+                    answer: "kollektief"
+                },
+                {
+                    title: "Gallery Steps",
+                    text: "Down below where stories sleep, beneath the frame of rising hope. Concrete veins that echo feet, count your steps before you cope.\nBetween the past and future's grace, lies the gallery, hidden face. One by one you must descend, 'till double digits mark the end.\nJust before the silence hums how many steps to reach the drums?\n(2 digits)",
+                    answer: "10"
+                },
+                {
+                    title: "Local Delicacy",
+                    text: "A taste that dances, sweet and wild,\nfound where stories feed the child.\nNot just fruit, but spice and soul,\nmixed together in one bold bowl.\nIt stains your lips with tangy cheer,\na local treat, both far and near.\nIn Kunir's heart, it's served with pride\na flavor that won't ever hide.\nCrunchy, fresh, and full of zest,\nthis spicy mix is simply the best.\nFind my name.\n(5 letters)",
+                    answer: "rujak"
+                },
+                {
+                    title: "Ancient Foundation",
+                    text: "I'm ancient, yet I still serve,\nA silent witness with steady nerve.\nCarved by hands from time gone past,\nI helped the walls and roofs to last.\nYou won't find me up above,\nBut I'm the base that buildings love.\nA relic of tradition, strong and stout\nWhat am I?",
+                    answer: "umpak"
                 }
             ],
             kampung: [
@@ -130,6 +150,26 @@
                     title: "Jembatan Kereta",
                     text: "Di bawah jembatan ini,\nsungai mengalir melalui sejarah.\nAirnya telah melihat kisah kolonial\ndan menyaksikan waktu mengalir tanpa henti.\nSungai ini menghubungkan kota dengan akarnya.\nSebutkan sungainya.\n(Satu kata)",
                     answer: "ciliwung"
+                },
+                  {
+                    title: "Kampung Susun Kunir",
+                    text: "Di bawah daun dan hujan pagi,\ndi mana kayu oranye memegang akar lagi.\nBukan hanya bangku, bukan hanya tempat duduk,\ntapi cerita terukir di mana kehidupan tanaman bertemu.\nHuruf melengkung dalam bentuk yang menyenangkan,\ntersembunyi di tempat yang tenang, hangat.\nBukan satu tempat, tapi banyak sebagai satu\nnama yang mereka bagi di bawah matahari.\nLihat dekat di mana tanaman selaras,\nbaca apa yang kayu tinggalkan.\n(9 huruf)",
+                    answer: "kollektief"
+                },
+                {
+                    title: "Tangga Galeri",
+                    text: "Di bawah sana di mana cerita tidur, di bawah bingkai harapan yang naik. Pembuluh beton yang menggemakan kaki, hitung langkahmu sebelum kamu mengatasi.\nAntara masa lalu dan masa depan, terletak galeri, wajah tersembunyi. Satu per satu kamu harus turun, sampai dua digit menandai akhir.\nSebelum keheningan bersenandung berapa langkah untuk mencapai drum?\n(2 digit)",
+                    answer: "10"
+                },
+                {
+                    title: "Kelezatan Lokal",
+                    text: "Rasa yang menari, manis dan liar,\nditemukan di mana cerita memberi makan anak.\nBukan hanya buah, tapi rempah dan jiwa,\ndicampur bersama dalam satu mangkuk berani.\nItu menodai bibirmu dengan keceriaan asam,\nkambing lokal, jauh dan dekat.\nDi jantung Kunir, itu disajikan dengan bangga\nrasa yang tidak akan pernah bersembunyi.\nRenyah, segar, dan penuh semangat,\ncampuran pedas ini adalah yang terbaik.\nTemukan namaku.\n(5 huruf)",
+                    answer: "rujak"
+                },
+                {
+                    title: "Fondasi Kuno",
+                    text: "Aku kuno, namun aku masih melayani,\nSaksi bisu dengan saraf yang mantap.\nDiukir dengan tangan dari masa lalu,\nAku membantu dinding dan atap bertahan.\nKamu tidak akan menemukanku di atas,\nTapi aku adalah dasar yang dicintai bangunan.\nPeringgalan tradisi, kuat dan tegap\nApa aku?",
+                    answer: "umpak"
                 }
             ],
             kampung: [
@@ -155,12 +195,56 @@
                 }
             ]
         };
+        // Mobile detection and optimization
+function isMobileDevice() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
+}
 
         // Initialize the game
         function init() {
             riddlesData = currentLanguage === 'en' ? riddlesDataEn : riddlesDataId;
             updateLanguage();
         }
+            // Mobile-specific optimizations
+    if (isMobileDevice()) {
+        optimizeForMobile();
+    }
+    
+    // Add touch feedback for mobile
+    addTouchFeedback();
+
+function optimizeForMobile() {
+    // Prevent zoom on input focus for iOS
+    const inputs = document.querySelectorAll('input');
+    inputs.forEach(input => {
+        input.style.fontSize = '16px'; // Prevents zoom in iOS
+    });
+    
+    // Add better touch targets
+    const buttons = document.querySelectorAll('.btn');
+    buttons.forEach(btn => {
+        btn.style.minHeight = '44px';
+        btn.style.minWidth = '44px';
+    });
+    
+    // Improve scrolling
+    document.body.style.webkitOverflowScrolling = 'touch';
+}
+
+function addTouchFeedback() {
+    const buttons = document.querySelectorAll('.btn, .location-card');
+    buttons.forEach(btn => {
+        btn.addEventListener('touchstart', function() {
+            this.style.transform = 'scale(0.95)';
+        });
+        
+        btn.addEventListener('touchend', function() {
+            setTimeout(() => {
+                this.style.transform = '';
+            }, 150);
+        });
+    });
+}
 
         function toggleLanguage() {
             currentLanguage = currentLanguage === 'en' ? 'id' : 'en';
@@ -200,6 +284,10 @@
             document.getElementById('nameInput').classList.remove('hidden');
             document.getElementById('playerName').focus();
         }
+   // Focus with delay for better mobile experience
+    setTimeout(() => {
+        document.getElementById('playerName').focus();
+    }, 300);
 
         function showLocationSelect() {
             const nameValue = document.getElementById('playerName').value.trim();
@@ -253,6 +341,10 @@
             
             document.getElementById('answerInput').focus();
         }
+          // Focus input with delay for mobile
+    setTimeout(() => {
+        answerInput.focus();
+    }, 300);
 
         function checkAnswer() {
             const userAnswer = document.getElementById('answerInput').value.trim().toLowerCase();
