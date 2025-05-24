@@ -34,8 +34,8 @@
                 langText: "🇺🇸 EN"
             },
             id: {
-                title: "Petualangan Teka-teki Warisan",
-                welcomeTitle: "Selamat Datang di Petualangan Teka-teki Warisan!",
+                title: "Kampung Susun Kunir Riddle",
+                welcomeTitle: "Selamat Datang di Kampung Susun Kunir Riddle!",
                 welcomeText: "Mulailah perjalanan melalui sejarah dan budaya Jakarta yang kaya dengan memecahkan teka-teki dan menemukan harta tersembunyi.",
                 startBtn: "Mulai Petualangan",
                 nameTitle: "Masukkan Nama Anda",
@@ -48,7 +48,7 @@
                 submitAnswerBtn: "Kirim Jawaban",
                 nextBtn: "Teka-teki Selanjutnya",
                 congratsTitle: "Selamat!",
-                congratsText: "Anda telah berhasil menyelesaikan Petualangan Teka-teki Warisan!",
+                congratsText: "Anda telah berhasil menyelesaikan Kampung Susun Kunir Riddle!",
                 certTitle: "Sertifikat Pencapaian",
                 certText: "Ini untuk menyatakan bahwa",
                 certCompleted: "telah berhasil menyelesaikan",
@@ -300,8 +300,8 @@
             document.getElementById('certificate').innerHTML = certificateHtml;
         }
 
-        function downloadCertificate() {
-            // Create a canvas to generate the certificate image with enhanced design
+    function downloadCertificate() {
+            // Create a canvas to generate the certificate image with clean design
             const canvas = document.createElement('canvas');
             const ctx = canvas.getContext('2d');
             canvas.width = 1000;
@@ -317,99 +317,99 @@
             
             // Decorative border
             ctx.strokeStyle = '#f1c40f';
-            ctx.lineWidth = 15;
-            ctx.strokeRect(30, 30, canvas.width - 60, canvas.height - 60);
+            ctx.lineWidth = 12;
+            ctx.strokeRect(25, 25, canvas.width - 50, canvas.height - 50);
             
             // Inner decorative border
             ctx.strokeStyle = '#f39c12';
-            ctx.lineWidth = 3;
-            ctx.strokeRect(60, 60, canvas.width - 120, canvas.height - 120);
+            ctx.lineWidth = 2;
+            ctx.strokeRect(50, 50, canvas.width - 100, canvas.height - 100);
             
             // Corner decorations
             const corners = [
-                {x: 80, y: 80}, {x: canvas.width - 80, y: 80},
-                {x: 80, y: canvas.height - 80}, {x: canvas.width - 80, y: canvas.height - 80}
+                {x: 75, y: 75}, {x: canvas.width - 75, y: 75},
+                {x: 75, y: canvas.height - 75}, {x: canvas.width - 75, y: canvas.height - 75}
             ];
             
             corners.forEach(corner => {
                 ctx.fillStyle = '#f1c40f';
                 ctx.beginPath();
-                ctx.arc(corner.x, corner.y, 15, 0, 2 * Math.PI);
+                ctx.arc(corner.x, corner.y, 12, 0, 2 * Math.PI);
                 ctx.fill();
             });
             
-            // Title with enhanced styling
-            ctx.fillStyle = '#d35400';
-            ctx.font = 'bold 56px Arial';
+            // Trophy icon at top center
+            ctx.font = '40px Arial';
             ctx.textAlign = 'center';
-            ctx.fillText(translations[currentLanguage].certTitle, canvas.width / 2, 160);
+            ctx.fillText('🏆', canvas.width / 2, 130);
             
-            // Trophy emoji
-            ctx.font = '48px Arial';
-            ctx.fillText('🏆', canvas.width / 2 + 200, 140);
+            // Title with clean spacing
+            ctx.fillStyle = '#d35400';
+            ctx.font = 'bold 48px Arial';
+            ctx.fillText(translations[currentLanguage].certTitle, canvas.width / 2, 190);
             
             // Certificate text
             ctx.fillStyle = '#34495e';
-            ctx.font = '28px Arial';
-            ctx.fillText(translations[currentLanguage].certText, canvas.width / 2, 220);
+            ctx.font = '24px Arial';
+            ctx.fillText(translations[currentLanguage].certText, canvas.width / 2, 250);
             
-            // Name with gradient effect (simulated with shadow)
+            // Name with gradient effect
             ctx.fillStyle = '#f39c12';
-            ctx.font = 'bold 48px Arial';
+            ctx.font = 'bold 44px Arial';
             ctx.shadowColor = '#f1c40f';
-            ctx.shadowBlur = 10;
-            ctx.fillText(playerName, canvas.width / 2, 300);
+            ctx.shadowBlur = 8;
+            ctx.fillText(playerName, canvas.width / 2, 320);
             ctx.shadowBlur = 0;
             
             // Underline for name
             ctx.strokeStyle = '#f1c40f';
-            ctx.lineWidth = 4;
+            ctx.lineWidth = 3;
             ctx.beginPath();
             const nameWidth = ctx.measureText(playerName).width;
-            ctx.moveTo((canvas.width - nameWidth) / 2, 315);
-            ctx.lineTo((canvas.width + nameWidth) / 2, 315);
+            ctx.moveTo((canvas.width - nameWidth) / 2, 335);
+            ctx.lineTo((canvas.width + nameWidth) / 2, 335);
             ctx.stroke();
             
             // Completion text
             ctx.fillStyle = '#34495e';
-            ctx.font = '28px Arial';
-            ctx.fillText(translations[currentLanguage].certCompleted, canvas.width / 2, 370);
+            ctx.font = '24px Arial';
+            ctx.fillText(translations[currentLanguage].certCompleted, canvas.width / 2, 380);
             
             // Adventure title
             ctx.fillStyle = '#d35400';
-            ctx.font = 'bold 40px Arial';
-            ctx.fillText(translations[currentLanguage].certAdventure, canvas.width / 2, 430);
+            ctx.font = 'bold 36px Arial';
+            ctx.fillText(translations[currentLanguage].certAdventure, canvas.width / 2, 440);
             
             // Location
             const locationText = selectedLocation === 'jakarta' ? 
                 (currentLanguage === 'en' ? 'Jakarta Kota Edition' : 'Edisi Jakarta Kota') :
                 (currentLanguage === 'en' ? 'Kampung Susun Edition' : 'Edisi Kampung Susun');
             ctx.fillStyle = '#7f8c8d';
-            ctx.font = 'italic 24px Arial';
+            ctx.font = 'italic 22px Arial';
             ctx.fillText(locationText, canvas.width / 2, 480);
             
-            // Date with border
+            // Date section with proper spacing
             ctx.fillStyle = '#95a5a6';
-            ctx.font = '22px Arial';
+            ctx.font = '20px Arial';
             const dateText = new Date().toLocaleDateString(currentLanguage === 'en' ? 'en-US' : 'id-ID');
-            ctx.fillText(dateText, canvas.width / 2, 560);
+            ctx.fillText(dateText, canvas.width / 2, 550);
             
-            // Date border line
+            // Date border line above date (not overlapping)
             ctx.strokeStyle = '#f1c40f';
             ctx.lineWidth = 2;
             ctx.beginPath();
-            ctx.moveTo(canvas.width / 2 - 100, 540);
-            ctx.lineTo(canvas.width / 2 + 100, 540);
+            ctx.moveTo(canvas.width / 2 - 80, 530);
+            ctx.lineTo(canvas.width / 2 + 80, 530);
             ctx.stroke();
             
-            // Star seal
+            // Star seal in bottom right corner
             ctx.fillStyle = '#f1c40f';
-            ctx.font = '64px Arial';
-            ctx.fillText('⭐', canvas.width - 150, canvas.height - 100);
+            ctx.font = '50px Arial';
+            ctx.fillText('⭐', canvas.width - 120, canvas.height - 80);
             
             // Download the certificate
             const link = document.createElement('a');
-            link.download = `Kampung Susun Kunir_Riddle_Certificate_${playerName.replace(/\s+/g, '_')}.png`;
+            link.download = `Kampung_Susun_Kunir_Certificate_${playerName.replace(/\s+/g, '_')}.png`;
             link.href = canvas.toDataURL('image/png', 1.0);
             link.click();
         }
