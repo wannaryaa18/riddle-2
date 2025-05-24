@@ -52,7 +52,7 @@
                 certTitle: "Sertifikat Pencapaian",
                 certText: "Ini untuk menyatakan bahwa",
                 certCompleted: "telah berhasil menyelesaikan",
-                certAdventure: "Petualangan Teka-teki Warisan",
+                certAdventure: "Kampung Susun Kunir Riddle",
                 downloadBtn: "Unduh Sertifikat",
                 restartBtn: "Main Lagi",
                 correctAnswer: "Benar! Bagus sekali!",
