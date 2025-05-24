@@ -93,7 +93,7 @@
                 },
                 {
                     title: "Gallery Steps",
-                    text: "Down below where stories sleep,\n beneath the frame of rising hope.\n Concrete veins that echo feet,\n count your steps before you cope.\nBetween the past and future's grace,\n lies the gallery, hidden face.\n One by one you must descend,\n 'till double digits mark the end.\nJust before the silence hums \nhow many steps to reach the drums?\n(2 digits)",
+                    text: "Down below where stories sleep, beneath the frame of rising hope. Concrete veins that echo feet, count your steps before you cope.\nBetween the past and future's grace, lies the gallery, hidden face. One by one you must descend, 'till double digits mark the end.\nJust before the silence hums how many steps to reach the drums?\n(2 digits)",
                     answer: "10"
                 },
                 {
@@ -140,7 +140,7 @@
                 },
                 {
                     title: "Tangga Galeri",
-                    text: "Di bawah sana di mana cerita tidur,\n di bawah bingkai harapan yang naik.\n Pembuluh beton yang menggemakan kaki,\n hitung langkahmu sebelum kamu mengatasi.\nAntara masa lalu dan masa depan, terletak galeri, wajah tersembunyi.\n Satu per satu kamu harus turun,\n sampai dua digit menandai akhir.\nSebelum keheningan bersenandung \nberapa langkah untuk mencapai drum?\n(2 digit)",
+                    text: "Di bawah sana di mana cerita tidur, di bawah bingkai harapan yang naik. Pembuluh beton yang menggemakan kaki, hitung langkahmu sebelum kamu mengatasi.\nAntara masa lalu dan masa depan, terletak galeri, wajah tersembunyi. Satu per satu kamu harus turun, sampai dua digit menandai akhir.\nSebelum keheningan bersenandung berapa langkah untuk mencapai drum?\n(2 digit)",
                     answer: "10"
                 },
                 {
@@ -301,189 +301,111 @@
         }
 
     function downloadCertificate() {
-            // Create a canvas to generate the certificate image with premium design
+            // Create a canvas to generate the certificate image with clean design
             const canvas = document.createElement('canvas');
             const ctx = canvas.getContext('2d');
-            canvas.width = 1200;
-            canvas.height = 800;
+            canvas.width = 1000;
+            canvas.height = 700;
             
-            // Premium gradient background
-            const bgGradient = ctx.createRadialGradient(canvas.width/2, canvas.height/2, 0, canvas.width/2, canvas.height/2, canvas.width/2);
-            bgGradient.addColorStop(0, '#ffffff');
-            bgGradient.addColorStop(0.7, '#f8f9fa');
-            bgGradient.addColorStop(1, '#e9ecef');
-            ctx.fillStyle = bgGradient;
+            // Background gradient
+            const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+            gradient.addColorStop(0, '#ffffff');
+            gradient.addColorStop(0.5, '#f8f9fa');
+            gradient.addColorStop(1, '#ffffff');
+            ctx.fillStyle = gradient;
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             
-            // Outer decorative border with gradient
-            const borderGradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-            borderGradient.addColorStop(0, '#f1c40f');
-            borderGradient.addColorStop(0.5, '#f39c12');
-            borderGradient.addColorStop(1, '#e67e22');
-            ctx.strokeStyle = borderGradient;
-            ctx.lineWidth = 15;
-            ctx.strokeRect(30, 30, canvas.width - 60, canvas.height - 60);
+            // Decorative border
+            ctx.strokeStyle = '#f1c40f';
+            ctx.lineWidth = 12;
+            ctx.strokeRect(25, 25, canvas.width - 50, canvas.height - 50);
             
-            // Inner elegant border
-            ctx.strokeStyle = '#d4af37';
-            ctx.lineWidth = 3;
-            ctx.strokeRect(60, 60, canvas.width - 120, canvas.height - 120);
+            // Inner decorative border
+            ctx.strokeStyle = '#f39c12';
+            ctx.lineWidth = 2;
+            ctx.strokeRect(50, 50, canvas.width - 100, canvas.height - 100);
             
-            // Decorative corner elements
-            const cornerSize = 40;
+            // Corner decorations
             const corners = [
-                {x: 80, y: 80}, {x: canvas.width - 80, y: 80},
-                {x: 80, y: canvas.height - 80}, {x: canvas.width - 80, y: canvas.height - 80}
+                {x: 75, y: 75}, {x: canvas.width - 75, y: 75},
+                {x: 75, y: canvas.height - 75}, {x: canvas.width - 75, y: canvas.height - 75}
             ];
             
             corners.forEach(corner => {
-                // Corner circles with gradient
-                const cornerGradient = ctx.createRadialGradient(corner.x, corner.y, 0, corner.x, corner.y, cornerSize/2);
-                cornerGradient.addColorStop(0, '#f1c40f');
-                cornerGradient.addColorStop(1, '#d4af37');
-                ctx.fillStyle = cornerGradient;
+                ctx.fillStyle = '#f1c40f';
                 ctx.beginPath();
-                ctx.arc(corner.x, corner.y, cornerSize/2, 0, 2 * Math.PI);
+                ctx.arc(corner.x, corner.y, 12, 0, 2 * Math.PI);
                 ctx.fill();
-                
-                // Corner decorative pattern
-                ctx.strokeStyle = '#ffffff';
-                ctx.lineWidth = 2;
-                ctx.beginPath();
-                ctx.arc(corner.x, corner.y, cornerSize/3, 0, 2 * Math.PI);
-                ctx.stroke();
             });
             
-            // Top decorative header
-            ctx.fillStyle = '#f39c12';
-            ctx.fillRect(100, 100, canvas.width - 200, 8);
-            
-            // Certificate emblem/logo area
-            ctx.font = '60px serif';
+            // Trophy icon at top center
+            ctx.font = '40px Arial';
             ctx.textAlign = 'center';
-            ctx.fillStyle = '#d4af37';
-            ctx.fillText('🏆', canvas.width / 2, 180);
+            ctx.fillText('🏆', canvas.width / 2, 130);
             
-            // Main title with elegant typography
-            ctx.fillStyle = '#2c3e50';
-            ctx.font = 'bold 52px serif';
-            ctx.textAlign = 'center';
-            ctx.fillText(translations[currentLanguage].certTitle.toUpperCase(), canvas.width / 2, 250);
+            // Title with clean spacing
+            ctx.fillStyle = '#d35400';
+            ctx.font = 'bold 48px Arial';
+            ctx.fillText(translations[currentLanguage].certTitle, canvas.width / 2, 190);
             
-            // Decorative line under title
-            ctx.strokeStyle = '#f1c40f';
-            ctx.lineWidth = 4;
-            ctx.beginPath();
-            ctx.moveTo(canvas.width / 2 - 200, 270);
-            ctx.lineTo(canvas.width / 2 + 200, 270);
-            ctx.stroke();
-            
-            // Certificate presentation text
+            // Certificate text
             ctx.fillStyle = '#34495e';
-            ctx.font = '28px serif';
-            ctx.fillText(translations[currentLanguage].certText, canvas.width / 2, 320);
+            ctx.font = '24px Arial';
+            ctx.fillText(translations[currentLanguage].certText, canvas.width / 2, 250);
             
-            // Name section with premium styling
-            ctx.fillStyle = '#8b4513';
-            ctx.font = 'bold 50px serif';
-            ctx.textAlign = 'center';
+            // Name with gradient effect
+            ctx.fillStyle = '#f39c12';
+            ctx.font = 'bold 44px Arial';
+            ctx.shadowColor = '#f1c40f';
+            ctx.shadowBlur = 8;
+            ctx.fillText(playerName, canvas.width / 2, 320);
+            ctx.shadowBlur = 0;
             
-            // Name with elegant underline
-            const nameText = playerName.toUpperCase();
-            const nameMetrics = ctx.measureText(nameText);
-            ctx.fillText(nameText, canvas.width / 2, 390);
-            
-            // Elegant underline for name
-            const underlineY = 405;
-            ctx.strokeStyle = '#d4af37';
+            // Underline for name
+            ctx.strokeStyle = '#f1c40f';
             ctx.lineWidth = 3;
             ctx.beginPath();
-            ctx.moveTo((canvas.width - nameMetrics.width) / 2 - 20, underlineY);
-            ctx.lineTo((canvas.width + nameMetrics.width) / 2 + 20, underlineY);
+            const nameWidth = ctx.measureText(playerName).width;
+            ctx.moveTo((canvas.width - nameWidth) / 2, 335);
+            ctx.lineTo((canvas.width + nameWidth) / 2, 335);
             ctx.stroke();
             
-            // Small decorative elements around name
-            ctx.fillStyle = '#f1c40f';
-            ctx.font = '20px serif';
-            ctx.fillText('✦', (canvas.width - nameMetrics.width) / 2 - 40, 395);
-            ctx.fillText('✦', (canvas.width + nameMetrics.width) / 2 + 40, 395);
-            
-            // Completion statement
+            // Completion text
             ctx.fillStyle = '#34495e';
-            ctx.font = '26px serif';
-            ctx.fillText(translations[currentLanguage].certCompleted, canvas.width / 2, 450);
+            ctx.font = '24px Arial';
+            ctx.fillText(translations[currentLanguage].certCompleted, canvas.width / 2, 380);
             
-            // Adventure/Program title
-            ctx.fillStyle = '#c0392b';
-            ctx.font = 'bold 38px serif';
-            ctx.fillText(translations[currentLanguage].certAdventure.toUpperCase(), canvas.width / 2, 500);
+            // Adventure title
+            ctx.fillStyle = '#d35400';
+            ctx.font = 'bold 36px Arial';
+            ctx.fillText(translations[currentLanguage].certAdventure, canvas.width / 2, 440);
             
-            // Location specification
+            // Location
             const locationText = selectedLocation === 'jakarta' ? 
-                (currentLanguage === 'en' ? 'Jakarta Kota Heritage Track' : 'Jalur Warisan Jakarta Kota') :
-                (currentLanguage === 'en' ? 'Kampung Susun Cultural Track' : 'Jalur Budaya Kampung Susun');
+                (currentLanguage === 'en' ? 'Jakarta Kota Edition' : 'Edisi Jakarta Kota') :
+                (currentLanguage === 'en' ? 'Kampung Susun Edition' : 'Edisi Kampung Susun');
             ctx.fillStyle = '#7f8c8d';
-            ctx.font = 'italic 24px serif';
-            ctx.fillText(locationText, canvas.width / 2, 540);
+            ctx.font = 'italic 22px Arial';
+            ctx.fillText(locationText, canvas.width / 2, 480);
             
-            // Date section with elegant presentation
-            const dateText = new Date().toLocaleDateString(currentLanguage === 'en' ? 'en-US' : 'id-ID', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-            });
+            // Date section with proper spacing
+            ctx.fillStyle = '#95a5a6';
+            ctx.font = '20px Arial';
+            const dateText = new Date().toLocaleDateString(currentLanguage === 'en' ? 'en-US' : 'id-ID');
+            ctx.fillText(dateText, canvas.width / 2, 550);
             
-            // Date background box
-            ctx.fillStyle = 'rgba(241, 196, 15, 0.1)';
-            ctx.fillRect(canvas.width / 2 - 120, 580, 240, 40);
+            // Date border line above date (not overlapping)
             ctx.strokeStyle = '#f1c40f';
             ctx.lineWidth = 2;
-            ctx.strokeRect(canvas.width / 2 - 120, 580, 240, 40);
-            
-            ctx.fillStyle = '#2c3e50';
-            ctx.font = '20px serif';
-            ctx.fillText(dateText, canvas.width / 2, 605);
-            
-            // Achievement seal in bottom right
-            const sealX = canvas.width - 150;
-            const sealY = canvas.height - 120;
-            
-            // Seal background circle with gradient
-            const sealGradient = ctx.createRadialGradient(sealX, sealY, 0, sealX, sealY, 50);
-            sealGradient.addColorStop(0, '#f1c40f');
-            sealGradient.addColorStop(0.7, '#f39c12');
-            sealGradient.addColorStop(1, '#d4af37');
-            ctx.fillStyle = sealGradient;
             ctx.beginPath();
-            ctx.arc(sealX, sealY, 50, 0, 2 * Math.PI);
-            ctx.fill();
-            
-            // Seal border
-            ctx.strokeStyle = '#b8860b';
-            ctx.lineWidth = 3;
+            ctx.moveTo(canvas.width / 2 - 80, 530);
+            ctx.lineTo(canvas.width / 2 + 80, 530);
             ctx.stroke();
             
-            // Seal star
-            ctx.fillStyle = '#ffffff';
-            ctx.font = 'bold 40px serif';
-            ctx.textAlign = 'center';
-            ctx.fillText('★', sealX, sealY + 12);
-            
-            // Additional decorative elements
+            // Star seal in bottom right corner
             ctx.fillStyle = '#f1c40f';
-            ctx.font = '16px serif';
-            ctx.textAlign = 'left';
-            ctx.fillText('✦', 100, canvas.height - 50);
-            ctx.textAlign = 'right';
-            ctx.fillText('✦', canvas.width - 100, canvas.height - 50);
-            
-            // Bottom decorative line
-            ctx.strokeStyle = '#f39c12';
-            ctx.lineWidth = 3;
-            ctx.beginPath();
-            ctx.moveTo(100, canvas.height - 80);
-            ctx.lineTo(canvas.width - 100, canvas.height - 80);
-            ctx.stroke();
+            ctx.font = '50px Arial';
+            ctx.fillText('⭐', canvas.width - 120, canvas.height - 80);
             
             // Download the certificate
             const link = document.createElement('a');
