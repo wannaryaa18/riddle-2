@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kampung Susun Kunir Riddle</title>
+    <link rel="stylesheet" href="style.css"> </head>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <button class="language-toggle" onclick="toggleLanguage()">
+                <span id="langText">🇮🇩 ID</span>
+            </button>
+            <h1 id="title">Kampung Susun Kunir Riddle</h1>
+        </div>
+        
+        <div class="content" id="content">
+            <!-- Welcome Screen -->
+            <div id="welcome" class="welcome-screen">
+                <h2 id="welcomeTitle">Welcome to the Kampung Susun Kunir Riddle!</h2>
+                <p id="welcomeText">Embark on a journey through Jakarta's rich history and culture by solving riddles and discovering hidden treasures.</p>
+                <button class="btn" onclick="showNameInput()" id="startBtn">Start Adventure</button>
+            </div>
+
+            <!-- Name Input -->
+            <div id="nameInput" class="name-input hidden">
+                <h2 id="nameTitle">Enter Your Name</h2>
+                <div class="input-group">
+                    <input type="text" id="playerName" placeholder="Your Name" maxlength="50">
+                </div>
+                <button class="btn" onclick="showLocationSelect()" id="nameSubmitBtn">Continue</button>
+            </div>
+
+            <!-- Location Selection -->
+            <div id="locationSelect" class="location-select hidden">
+                <h2 id="locationTitle">Choose Your Adventure</h2>
+                <div class="location-cards">
+                    <div class="location-card" onclick="selectLocation('jakarta')" id="jakartaCard">
+                        <h3 id="jakartaTitle">Jakarta Kota</h3>
+                        <p id="jakartaDesc">Explore the historic heart of Jakarta with its colonial architecture and cultural landmarks.</p>
+                    </div>
+                    <div class="location-card" onclick="selectLocation('kampung')" id="kampungCard">
+                        <h3 id="kampungTitle">Kampung Susun</h3>
+                        <p id="kampungDesc">Discover the traditional community life and local wisdom in modern urban settings.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Riddle Container -->
+            <div id="riddleContainer" class="riddle-container hidden">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div id="riddleContent">
+                    <div class="riddle-text" id="riddleText"></div>
+                    <div class="input-group">
+                        <input type="text" id="answerInput" placeholder="Enter your answer">
+                    </div>
+                    <button class="btn" onclick="checkAnswer()" id="submitAnswerBtn">Submit Answer</button>
+                    <div id="feedback" class="feedback hidden"></div>
+                </div>
+                <div id="riddleNavigation">
+                    <button class="btn" onclick="nextRiddle()" id="nextBtn" style="display: none;">Next Riddle</button>
+                </div>
+            </div>
+
+            <!-- Certificate Screen -->
+            <div id="certificateScreen" class="certificate-screen hidden">
+                <h2 id="congratsTitle">Congratulations!</h2>
+                <p id="congratsText">You have successfully completed the Kampung Susun Kunir Riddle!</p>
+                
+                <div class="certificate" id="certificate">
+                    <div class="certificate-content">
+                        <h2 id="certTitle">Certificate of Achievement</h2>
+                        <p class="certificate-text" id="certText">This is to certify that</p>
+                        <div class="certificate-name" id="certificateName"></div>
+                        <p class="certificate-text" id="certCompleted">has successfully completed the</p>
+                        <h3 class="certificate-achievement" id="certAdventure">Kampung Susun Kunir Riddle</h3>
+                        <p class="certificate-location" id="certLocation"></p>
+                        <div class="certificate-date" id="certDate"></div>
+                        <div class="certificate-seal">⭐</div>
+                    </div>
+                </div>
+                
+                <button class="btn download-btn" onclick="downloadCertificate()" id="downloadBtn">Download Certificate</button>
+                <button class="btn" onclick="restartGame()" id="restartBtn">Play Again</button>
+            </div>
+        </div>
+    </div>
+
+<script src="script.js"></script> 
+</body>
+</html>
