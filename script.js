@@ -474,8 +474,8 @@ function addTouchFeedback() {
             
             // Location
             const locationText = selectedLocation === 'jakarta' ? 
-                (currentLanguage === 'en' ? 'Jakarta Kota Edition' : 'Edisi Jakarta Kota') :
-                (currentLanguage === 'en' ? 'Kampung Susun Edition' : 'Edisi Kampung Susun');
+                (currentLanguage === 'en' ? 'Jakarta Kota Edition (8 Riddles Completed)' : 'Edisi Jakarta Kota (8 Teka-teki Diselesaikan)') :
+                (currentLanguage === 'en' ? 'Kampung Susun Edition (4 Riddles Completed)' : 'Edisi Kampung Susun (4 Teka-teki Diselesaikan)');
             ctx.fillStyle = '#7f8c8d';
             ctx.font = 'italic 22px Arial';
             ctx.fillText(locationText, canvas.width / 2, 480);
